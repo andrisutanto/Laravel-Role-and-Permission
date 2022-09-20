@@ -25,3 +25,19 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::resource('roles',RoleController::class);
+
+//cuman bisa diakses oleh IT
+// Route::controller(RoleController::class)->group(function(){
+//     Route::get('/roles', 'index');
+// });
+
+//ini yang diberikan permission
+// Route::controller(RoleController::class)->group(function(){
+//     Route::get('/roles', 'index')->middleware('can:read role');
+
+//     //coba untuk route yang lain
+//     //Route::get('roles/create', 'create')->middleware('can: create role');
+
+//     Route::get('roles/create', 'create');
+// });
+//tapi tidak menggunakan cara diatas, kita menggunakan controller

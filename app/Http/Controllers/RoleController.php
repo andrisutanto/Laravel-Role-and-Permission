@@ -2,19 +2,36 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class RoleController extends Controller
 {
+    public function __construct() {
+        $this->middleware('can:create role')->only('create');
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        //bisa pakai cara ini tapi tidak disarankan, karena manual
+        // if($request->user()->hasRole('it')){
+        //     return "role page";
+        // }
+        // abort(403);
+
+        //bisa juga menggunakan routes utk membatas akses
+        // $this->authorize('read role');
+        if(!Gate::allows('read role')){
+            abort(403,'unauthorized');
+        }
         return "role page";
+        
+        
     }
 
     /**
@@ -25,6 +42,7 @@ class RoleController extends Controller
     public function create()
     {
         //
+        return 'create role page';
     }
 
     /**

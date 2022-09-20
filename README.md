@@ -36,3 +36,8 @@ php artisan migrate:fresh --seed
 5. Route & Controller
 - php artisan make:controller RoleController -r
 
+untuk membatasi akses, bisa dari controller atau dari routes
+
+Ref lihat di:
+- Routes->web.php
+- app->Http->controller->RoleController.php
