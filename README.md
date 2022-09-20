@@ -1,2 +1,38 @@
 # laravel-role
- Laravel Role and Permission
+Laravel Role and Permission
+
+1. Buat Laravel Project
+composer create-project laravel/laravel=^9.1 laravel-role
+
+2. Install Breeze
+- composer require laravel/breeze --dev
+- php artisan breeze:install
+- php artisan migrate
+
+3. Install Spatie
+- composer require spatie/laravel-permission
+- php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
+- php artisan migrate
+
+Cara Penggunakan Spatie:
+https://spatie.be/docs/laravel-permission/v5/basic-usage/basic-usage
+
+tambahkan, 
+use Spatie\Permission\Traits\HasRoles;
+dan use HasRoles
+pada bagian model
+
+4. Buat Seeder Role, User, dan Permission
+- php artisan make:seeder UserRolePermissionSeeder
+
+kemudian sesuaikan datanya, referensi lihat file: database/seeders/UserRolePermissionSeeder.php
+dan DatabaseSeeder.php
+
+- php artisan db:seed
+
+(Untuk fresh migrate)
+php artisan migrate:fresh --seed
+
+5. Route & Controller
+- php artisan make:controller RoleController -r
+
