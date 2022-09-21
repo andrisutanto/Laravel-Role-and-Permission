@@ -26,10 +26,15 @@ class RoleController extends Controller
 
         //bisa juga menggunakan routes utk membatas akses
         // $this->authorize('read role');
-        if(!Gate::allows('read role')){
-            abort(403,'unauthorized');
-        }
-        return "role page";
+        // if(!Gate::allows('read role')){
+        //     //abort(403,'unauthorized');
+        // }
+        //return "role page";
+        
+
+        $this->authorize('read role');
+
+        return view('role.index');
         
         
     }

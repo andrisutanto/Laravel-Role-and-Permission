@@ -24,7 +24,13 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::resource('roles',RoleController::class);
+
+//pengecekan roles ini seharusnya setelah user melakukan login
+Route::middleware('auth')->group(function(){
+    Route::resource('roles',RoleController::class);
+});
+
+// Route::resource('roles',RoleController::class);
 
 //cuman bisa diakses oleh IT
 // Route::controller(RoleController::class)->group(function(){
